@@ -59,3 +59,5 @@ target/
 flask/
 # vim
 *.swp
+
+app/static/tmp

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="form-inline" style="margin: auto; width: 500px; margin-top: 350px;" action="index" method="POST" enctype="multipart/form-data">
+  {{ form.csrf_token }}
+  {{ form.filename(class="form-control") }}
+  <input type="submit" class="btn btn-default" value="Upload">
+</form>
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ article_title }}:{{ fdist.samples }} in {{ fdist.outcomes }}
+<div style="width:500px;font-family: Caecilia;">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active" role="presentation"><a href="#text" aria-controls="text" role="tab" data-toggle="tab">Text</a></li>
+    <li role="presentation"><a href="#dictionary" aria-controls="dictionary" role="tab" data-toggle="tab">Dictionary</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fad in active" id="text">
+      {{ text }}
+    </div>
+    <div id="profile" class="tab-pane fade">
+      profile
+    </div>
+    <div class="tab-pane fade" id="dictionary">
+      <table class="table">
+        <tr>
+          <td>序号</td>
+          <td>单词</td>
+          <td>次数</td>
+          <td>频度</td>
+          <td>发音</td>
+          <td>释义</td>
+        </tr>
+      {% for word in fdist['words'] %}
+        {% if word[1]['basic'] != None %}
+        <tr>
+          <td>{{ word[1]['index'] }}</td>
+          <td>{{ word[1]['word'] }}</td>
+          <td>{{ word[1]['count'] }}</td>
+          <td>{{ word[1]['freq'] }}</td>
+          <td>[uk]{{ word[1]['basic']['basic']['uk-phonetic']}}<br>[us]{{ word[1]['basic']['basic']['us-phonetic']}}</td>
+          <td>
+            {% for exp in  word[1]['basic']['basic']['explains'] %}
+            {{ exp }}<br>
+            {% endfor %}
+          </td>
+        </tr>
+        {% endif %}
+      {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+  {% endblock content %}

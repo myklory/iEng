@@ -2,11 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <title></title>
 </head>
 <body>
-  Hello, Flask with template,youdao!
-  <div id="YOUDAO_DICTER_WRAPPER" style="margin:0; border:0; padding:0; width:320px; height:240px; "></div>
+  {% block content %}base{% endblock %}
+  <div id="YOUDAO_DICTER_WRAPPER" style="display:none; margin:0; border:0; padding:0; width:320px; height:240px; position:fixed; left:500px; top:250px"></div>
   <script type="text/javascript" src="http://fanyi.youdao.com/openapi.do?keyfrom=myklory&key=1519925193&type=dicter&version=1.2&select=on&translate=on" charset="utf-8"></script>
 </body>
 </html>
