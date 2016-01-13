@@ -13,14 +13,14 @@ Sign up
   {{ form.csrf_token }}
 	<h2 class="form-signin-heading">Please sign up</h2>
   <div class="form-group has-feedback">
-    {{ form.username(class="form-control", placeholder="Enter your Email as sign in name", id="signup-name") }}  
-    {% for error in form.username.errors %}
+    {{ form.email(class="form-control", placeholder="Enter your Email", id="signup-name") }}
+    {% for error in form.email.errors %}
       <span style="color: red;"> {{ error }}</span>
     {% endfor %}
   </div>
 
   <div class="form-group has-feedback">
-    {{ form.nickname(class="form-control", placeholder="Nick name", id="nick-name") }}  
+    {{ form.nickname(class="form-control", placeholder="Nick name", id="nick-name") }}
     {% for error in form.nickname.errors %}
       <span style="color: red;"> {{ error }}</span>
     {% endfor %}
@@ -38,8 +38,45 @@ Sign up
     {% endfor %}
   </div>
 
-  <button class="btn btn-primary btn-large btn-block" >Sing up</button>
+  <button class="btn btn-primary btn-large btn-block" id="signup">Sing up</button>
   <a class="login-link" href="#">Lost your password?</a>
   <a class="" href="{{url_for('signin')}}">Sign in</a>
 </form>
 {% endblock content %}
+
+{% block script %}
+<script type="text/javascript">
+    /*
+$(function(){
+    $("#nick-name").blur(function(){
+        $.post("{{url_for('validatenickname')}}", {"nickname":$("#nick-name").val()}, function(data, status){
+            console.log(data)
+            if(data === "false"){
+                console.log(data)
+                $("#nicknameerror").text("The nickname is used");
+                $("#nicknameerror").css("color", "red");
+            }
+            else{
+                $("#nicknameerror").text("");
+            }
+        });
+    });
+});
+
+$(function(){
+   $("#signup-name").blur(function(){
+       $.post("{{url_for('validateemail')}}", {"email":$("#signup-name").val()}, function(data, status){
+           if(data === "false"){
+               $("#emailerror").text("The Email is already registered!");
+               $("#emailerror").css("color", "red");
+           }
+           else{
+               $("#emailerror").text("");
+           }
+
+       }, "json");
+   });
+});
+*/
+</script>
+{% endblock script %}

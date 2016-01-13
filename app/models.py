@@ -4,8 +4,9 @@
 from werkzeug.security import check_password_hash
 
 class User():
-  def __init__(self, username):
-    self.username = username
+  def __init__(self, nickname, email):
+    self.nickname = nickname
+    self.email = email
 
   def is_authenticated(self):
     return True
@@ -17,7 +18,7 @@ class User():
     return False
 
   def get_id(self):
-    return self.username
+    return self.nickname
 
   @staticmethod
   def validate_login(password_hash, password):
