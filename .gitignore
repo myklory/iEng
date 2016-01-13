@@ -63,3 +63,5 @@ flask/
 app/static/tmp
 
 .idea/
+
+nginx/log/
