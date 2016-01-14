@@ -1,0 +1,29 @@
+body {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.site-header{
+    position: relative;
+    text-align: center;
+    background-color: #27ae60;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.site-nav{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+}
+
+.site-nav a{
+    color: #eee;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
