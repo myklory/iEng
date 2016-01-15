@@ -50,7 +50,6 @@ class TextAnalyze():
     begin = clock()
     print('begin')
     tokens = nltk.word_tokenize(content)
-    print('1111')
     wordlist = nltk.corpus.words.words()
     stopwords = nltk.corpus.stopwords.words('english')
     fdist = FreqDist(wnl.lemmatize(wnl.lemmatize(wnl.lemmatize(word.lower(),'a')), 'v') for word in tokens if word.isalpha() and word not in stopwords)

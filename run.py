@@ -5,4 +5,4 @@ if __name__ == "__main__":
     app.run(debug = True)
 else:
     import nltk
-    nltk.data.path = '/home/namine/nltk_data'
+    nltk.data.path.append('/home/namine/nltk_data')
