@@ -18,8 +18,8 @@ class TextAnalyze():
       content = json.loads(content)
       if content['errorCode'] != 0 or 'basic' not in content:
         return None
-      c = MongoClient(host='localhost', port=27017)
-      db = c.dict
+      #c = MongoClient(host='localhost', port=27017)
+      #db = c.dict
       if 'translation' in content:
         content.pop('translation')
       if 'web' in content:
@@ -29,7 +29,8 @@ class TextAnalyze():
       if 'errorCode' in content:
         content.pop('errorCode')
       content['word'] = word
-      db.basic.insert(content)
+      #db.basic.insert(content)
+      dictdb.db.basic.insert(content)
       return content
     except:
       return None
