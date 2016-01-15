@@ -29,6 +29,7 @@
 {% block content %}
 <main class="content">
   {% if isAnalyze == True %}
+  {{ article_title }}:{{ fdist.samples }} in {{ fdist.outcomes }}
   <div style="width:500px;font-family: Caecilia;">
     <ul class="nav nav-tabs" role="tablist">
       <li class="active" role="presentation"><a href="#text" aria-controls="text" role="tab" data-toggle="tab">Text</a></li>

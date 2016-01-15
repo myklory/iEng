@@ -38,10 +38,11 @@ class TextAnalyze():
    # c = MongoClient(host='localhost', port=27017)
    # db = c.dict
    # exp = db.basic.find_one({'word':word})
+    #print(word)
     exp = dictdb.db.basic.find_one({'word': word})
-    #if exp == None:
-      #exp = self.getremotedict(word)
-      #print(word,exp)
+    if exp == None:
+      exp = self.getremotedict(word)
+    #print(word,exp)
     return exp
 
   def getdict(self, content):

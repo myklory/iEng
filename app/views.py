@@ -10,8 +10,10 @@ from app import app, authdb, login_manager
 from app.forms import *
 from flask.ext.login import login_required, login_user, logout_user, current_user
 from app.models import User
+from markupsafe import Markup
 from werkzeug.utils import secure_filename
 from nltk import FreqDist
+from app.TextAnalyze import TextAnalyze
 
 @app.route('/')
 @app.route('/index', methods=('GET', 'POST'))
@@ -20,15 +22,14 @@ def words():
   form = WordFileForm()
   if form.validate_on_submit():
     filename = secure_filename(form.filename.data.filename)
-    tokens = nltk.word_tokenize(form.filename.data.read().decode('utf-8'))
-    wnl = nltk.WordNetLemmatizer()
-    fdist = FreqDist(wnl.lemmatize(wnl.lemmatize(word.lower()), 'v') for word in tokens if word.isalpha())
-    return render_template('words.html', article_title=filename, fdist = fdist)
+    #tokens = nltk.word_tokenize(form.filename.data.read().decode('utf-8'))
+    #wnl = nltk.WordNetLemmatizer()
+    #fdist = FreqDist(wnl.lemmatize(wnl.lemmatize(word.lower()), 'v') for word in tokens if word.isalpha())
     ta = TextAnalyze()
     content=form.filename.data.read().decode('ISO-8859-1')
     return render_template('index.html',
                            form = form,
-                           isAnalyze=False,
+                           isAnalyze=True,
                            article_title = filename,
                            text=Markup('<p>'+content.replace('\r\n', r'</p><p>')[0:-3]),
                            fdist=ta.getdict(content))
